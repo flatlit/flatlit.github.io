@@ -1,0 +1,75 @@
+---
+import Bluesky from "simple-icons-astro/Bluesky";
+import Github from "simple-icons-astro/Github";
+import Itchdotio from "simple-icons-astro/Itchdotio";
+import Youtube from "simple-icons-astro/Youtube";
+import {
+  BLUESKY_URL,
+  GITHUB_URL,
+  ITCH_IO_URL,
+  SITE_DESCRIPTION,
+  SITE_TITLE,
+  YOUTUBE_URL,
+} from "../consts";
+
+const today = new Date();
+---
+
+<footer
+  class="footer sm:footer-horizontal bg-neutral text-neutral-content p-10 position-sticky bottom-0"
+>
+  <aside>
+    <div>
+      <p>
+        <b>{SITE_TITLE}</b>
+        <br />
+        {SITE_DESCRIPTION}
+      </p>
+      <p>
+        &copy; {today.getFullYear()}&nbsp;{SITE_TITLE}
+      </p>
+      <p>
+        Licensed under&nbsp;
+        <a
+          class="link link-hover"
+          href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
+        >
+          CC BY-NC-SA 4.0</a
+        >
+      </p>
+      <!-- TODO
+      <div class="flex flex-row gap-1 h-6">
+        <img
+          src="https://mirrors.creativecommons.org/presskit/icons/cc.svg"
+          alt="CC"
+        /><img
+          src="https://mirrors.creativecommons.org/presskit/icons/by.svg"
+          alt="BY"
+        /><img
+          src="https://mirrors.creativecommons.org/presskit/icons/nc.svg"
+          alt="NC"
+        /><img
+          src="https://mirrors.creativecommons.org/presskit/icons/sa.svg"
+          alt="SA"
+        /> 
+      </div>
+    -->
+    </div>
+  </aside>
+  <nav class="flex flex-col gap-2">
+    <h6 class="footer-title">Site</h6>
+    <div class="grid grid-flow-col gap-4">
+      <a href="#header">Top</a>
+      <a href="/">Home</a>
+      <a href="/jams">Game Jams</a>
+      <a href="/blog">Blog</a>
+    </div>
+    <h6 class="footer-title">Links</h6>
+    <div class="grid grid-flow-col gap-4">
+      <a href={BLUESKY_URL} target="_blank"><Bluesky /></a>
+      <a href={GITHUB_URL} target="_blank"><Github /></a>
+      <a href={ITCH_IO_URL} target="_blank"><Itchdotio /></a>
+      <a href={YOUTUBE_URL} target="_blank"><Youtube /></a>
+    </div>
+  </nav>
+</footer>

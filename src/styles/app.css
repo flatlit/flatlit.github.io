@@ -1,0 +1,59 @@
+@import "@fontsource-variable/oswald";
+@import "@fontsource-variable/open-sans";
+
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+@plugin "daisyui";
+@plugin "daisyui/theme" {
+  name: "light";
+  default: true;
+  prefersdark: true;
+  color-scheme: "dark";
+  --color-base-100: oklch(13% 0.028 261.692);
+  --color-base-200: oklch(21% 0.034 264.665);
+  --color-base-300: oklch(27% 0.033 256.848);
+  --color-base-content: oklch(96% 0.003 264.542);
+  --color-primary: oklch(55% 0.046 257.417);
+  --color-primary-content: oklch(98% 0.003 247.858);
+  --color-secondary: oklch(54% 0.281 293.009);
+  --color-secondary-content: oklch(97% 0.014 254.604);
+  --color-accent: oklch(94% 0.129 101.54);
+  --color-accent-content: oklch(37% 0.044 257.287);
+  --color-neutral: oklch(27% 0.041 260.031);
+  --color-neutral-content: oklch(98% 0.002 247.839);
+  --color-info: oklch(58% 0.158 241.966);
+  --color-info-content: oklch(97% 0.014 254.604);
+  --color-success: oklch(59% 0.145 163.225);
+  --color-success-content: oklch(97% 0.021 166.113);
+  --color-warning: oklch(66% 0.179 58.318);
+  --color-warning-content: oklch(98% 0.016 73.684);
+  --color-error: oklch(58% 0.253 17.585);
+  --color-error-content: oklch(96% 0.015 12.422);
+  --radius-selector: 0rem;
+  --radius-field: 0rem;
+  --radius-box: 0rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 2px;
+  --depth: 0;
+  --noise: 0;
+}
+
+body {
+  font-family: "Open Sans Variable", "Oswald Variable", sans-serif;
+}
+
+header,
+footer,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Oswald Variable", sans-serif;
+}
+
+.prose {
+  @apply text-slate-200;
+}

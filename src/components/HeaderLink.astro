@@ -1,0 +1,16 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+type Props = HTMLAttributes<"a">;
+
+const { href, ...props } = Astro.props;
+
+// TODO active state, but not sure how to show this nicely
+// const pathname = Astro.url.pathname.replace(import.meta.env.BASE_URL, "");
+// const subpath = pathname.match(/[^\/]+/g);
+// const isActive = href === pathname || href === "/" + (subpath?.[0] || "");
+---
+
+<a href={href} {...props}>
+  <slot />
+</a>

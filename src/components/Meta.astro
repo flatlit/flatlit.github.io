@@ -1,0 +1,68 @@
+---
+import FormattedDate from "./FormattedDate.astro";
+
+type Props = {
+  pubDate?: Date;
+  updatedDate?: Date;
+  jamName?: string;
+  jamLink?: string;
+  sourceLink?: string;
+  videoLink?: string;
+  playLink?: string;
+};
+
+const {
+  jamName,
+  jamLink,
+  sourceLink,
+  videoLink,
+  playLink,
+  pubDate,
+  updatedDate,
+} = Astro.props;
+---
+
+<div class="p-2 text-sm flex justify-end flex-row gap-2 text-accent">
+  {
+    playLink && (
+      <a class="link link-hover" href={playLink} target="_blank">
+        Play
+      </a>
+    )
+  }
+  {
+    videoLink && (
+      <a class="link link-hover" href={videoLink} target="_blank">
+        Video
+      </a>
+    )
+  }
+  {
+    jamLink && (
+      <a class="link link-hover" href={jamLink} target="_blank">
+        {jamName ?? "Jam"}
+      </a>
+    )
+  }
+  {
+    sourceLink && (
+      <a class="link link-hover" href={sourceLink} target="_blank">
+        Source
+      </a>
+    )
+  }
+  {
+    pubDate && (
+      <span>
+        <FormattedDate date={pubDate} />
+      </span>
+    )
+  }
+  {
+    updatedDate && (
+      <span class="italic">
+        Updated <FormattedDate date={updatedDate} />
+      </span>
+    )
+  }
+</div>
