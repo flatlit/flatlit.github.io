@@ -36,7 +36,7 @@ if (blogs.length < NUM_BLOGS) {
 <Layout title={SITE_TITLE} description={SITE_DESCRIPTION}>
   <Hero title={SITE_TITLE} description={SITE_DESCRIPTION} />
 
-  <div class="flex flex-col gap-4">
+  <div class="flex flex-col gap-4 mt-2">
     {blogs.length > 0 && (<h3 class="text-2xl">Blogs</h3>
     <section class="flex flex-col lg:flex-row flex-3 w-full gap-16">
       {blogs.map((post) => <BlogCardLink post={post} />)}
