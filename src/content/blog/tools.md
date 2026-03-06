@@ -16,7 +16,7 @@ Pixelorama
 
 Material Maker
 
-:::warning
+:::warning Not for me
 Krita (for the jigsaw texture)  
 :::
 

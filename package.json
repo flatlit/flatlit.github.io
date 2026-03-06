@@ -21,6 +21,7 @@
     "@tailwindcss/vite": "^4.2.1",
     "astro": "^5.17.1",
     "daisyui": "^5.5.19",
+    "remark-block-containers": "^1.1.0",
     "sharp": "^0.34.3",
     "simple-icons-astro": "^16.1.0",
     "tailwindcss": "^4.2.1"

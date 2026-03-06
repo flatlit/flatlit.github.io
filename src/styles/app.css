@@ -57,3 +57,38 @@ h6 {
 .prose {
   @apply text-slate-200;
 }
+
+/* For remark block container */
+
+.block-default {
+  @apply alert gap-4;
+}
+
+.block-default:has(h5),
+.block-default:has(.block-title) {
+  @apply alert-vertical justify-start text-left justify-items-start;
+}
+
+.block-default .block-title {
+  @apply font-bold;
+}
+
+.block-default.info {
+  @apply alert-info;
+}
+
+.block-default.tip {
+  @apply alert-success;
+}
+
+.block-default.warning {
+  @apply alert-warning;
+}
+
+.block-default.danger {
+  @apply alert-error;
+}
+
+.block-default.details {
+  /* @apply nothing */
+}
