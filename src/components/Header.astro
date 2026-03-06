@@ -1,4 +1,5 @@
 ---
+import RSS from "@lucide/astro/icons/rss";
 import Bluesky from "simple-icons-astro/Bluesky";
 import Github from "simple-icons-astro/Github";
 import Itchdotio from "simple-icons-astro/Itchdotio";
@@ -49,11 +50,20 @@ import NavLinks from "./NavLinks.astro";
         <NavLinks />
       </ul>
     </div>
-    <div class="navbar-end hidden lg:flex gap-2">
-      <a class="btn" href={BLUESKY_URL} target="_blank"><Bluesky /></a>
-      <a class="btn" href={GITHUB_URL} target="_blank"><Github /></a>
-      <a class="btn" href={ITCH_IO_URL} target="_blank"><Itchdotio /></a>
-      <a class="btn" href={YOUTUBE_URL} target="_blank"><Youtube /></a>
+    <div class="navbar-end hidden lg:flex gap-0">
+      <a class="btn btn-ghost" href={BLUESKY_URL} target="_blank"><Bluesky /></a
+      >
+      <a class="btn btn-ghost" href={GITHUB_URL} target="_blank"><Github /></a>
+      <a class="btn btn-ghost" href={ITCH_IO_URL} target="_blank"
+        ><Itchdotio /></a
+      >
+      <a class="btn btn-ghost" href={YOUTUBE_URL} target="_blank"><Youtube /></a
+      >
+      <a
+        class="btn btn-ghost"
+        href={new URL("rss.xml", Astro.site)}
+        target="_blank"><RSS /></a
+      >
     </div>
   </nav>
 </header>

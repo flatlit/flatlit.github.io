@@ -1,8 +1,10 @@
 ---
+import RSS from "@lucide/astro/icons/rss";
 import Bluesky from "simple-icons-astro/Bluesky";
 import Github from "simple-icons-astro/Github";
 import Itchdotio from "simple-icons-astro/Itchdotio";
 import Youtube from "simple-icons-astro/Youtube";
+
 import {
   BLUESKY_URL,
   GITHUB_URL,
@@ -70,6 +72,7 @@ const today = new Date();
       <a href={GITHUB_URL} target="_blank"><Github /></a>
       <a href={ITCH_IO_URL} target="_blank"><Itchdotio /></a>
       <a href={YOUTUBE_URL} target="_blank"><Youtube /></a>
+      <a href={new URL("rss.xml", Astro.site)} target="_blank"><RSS /></a>
     </div>
   </nav>
 </footer>
