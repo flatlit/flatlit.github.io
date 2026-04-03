@@ -1,8 +1,7 @@
 ---
 title: "AI"
 description: "What's my AI stance"
-pubDate: "01 Mar 2026"
-published: true
+publishedDate: "01 Mar 2026"
 ---
 
 ## 2026

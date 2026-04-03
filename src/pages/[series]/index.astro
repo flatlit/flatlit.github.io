@@ -1,0 +1,41 @@
+---
+import { getCollection, render, type CollectionEntry } from "astro:content";
+import { SITE_DESCRIPTION, SITE_TITLE } from "../../consts";
+import Layout from "../../layouts/Page.astro";
+import { publishedFilter, publishedOrder } from "../../utils";
+import ArticleCardLink from "../../components/ArticleCardLink.astro";
+
+export async function getStaticPaths() {
+  const series = await getCollection("series", publishedFilter);
+  const articles = await getCollection("articles", publishedFilter);
+  const seriesWithArticles = new Set(articles.map((p) => p.data.series));
+  return series
+    .filter((s) => seriesWithArticles.has(s.id))
+    .map((item) => ({
+      params: { series: item.id },
+      props: item,
+    }));
+}
+
+type Props = CollectionEntry<"series">;
+const series = Astro.props;
+const items = (
+  await getCollection(
+    "articles",
+    (x) => publishedFilter(x) && x.data.series === series.id,
+  )
+).sort(publishedOrder);
+
+const { Content } = await render(series);
+
+// TODO heroImage for the series
+---
+
+<Layout title={SITE_TITLE} description={SITE_DESCRIPTION}>
+  <h1 class="text-4xl mb-8">{series.data.title}</h1>
+  <Content />
+  <div class="divider"></div>
+  <section class="grid grid-cols-2 gap-16 justify-items-center">
+    {items.map((item) => <ArticleCardLink {item} />)}
+  </section>
+</Layout>

@@ -1,37 +1,25 @@
 ---
 import { getCollection } from "astro:content";
 import logoImage from "../assets/logo.png";
-import BlogCardLink from "../components/BlogCardLink.astro";
+import GameCardLink from "../components/GameCardLink.astro";
+import GeneralCardLink from "../components/GeneralCardLink.astro";
 import Hero from "../components/Hero.astro";
-import JamCardLink from "../components/JamCardLink.astro";
 import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
 import Layout from "../layouts/Page.astro";
+import { publishedFilter, publishedOrder } from "../utils";
 
-const NUM_GAMES = 3;
-const NUM_BLOGS = 3;
+const MAX_GAMES = 3;
+const MAX_BLOGS = 3;
 
-const pinnedGames = (
-  await getCollection("jams", (e) => e.data.pinned && e.data.published)
+const games = (
+  await getCollection("games", (e) => e.data.publishedDate && e.data.published)
 )
-  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
-  .slice(0, NUM_GAMES);
+  .sort(publishedOrder)
+  .slice(0, MAX_GAMES + 1);
 
-const pinnedBlogs = (
-  await getCollection("blog", (e) => e.data.pinned && e.data.published)
-)
-  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
-  .slice(0, NUM_BLOGS);
-
-const blogs = [...pinnedBlogs];
-if (blogs.length < NUM_BLOGS) {
-  const extraBlogs = (
-    await getCollection("blog", (e) => !e.data.pinned && e.data.published)
-  )
-    .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
-    .slice(0, NUM_BLOGS - blogs.length);
-
-  blogs.push(...extraBlogs);
-}
+const blogs = (await getCollection("posts", publishedFilter))
+  .sort(publishedOrder)
+  .slice(0, MAX_BLOGS + 1);
 
 // Another good quote from same guy
 // “I run because if I didn’t, I’d be sluggish and glum and spend too much time on the couch. I run to breathe the fresh air. I run to explore. I run to escape the ordinary. I run...to savor the trip along the way. Life becomes a little more vibrant, a little more intense. I like that.”
@@ -40,28 +28,24 @@ if (blogs.length < NUM_BLOGS) {
 
 <Layout title={SITE_TITLE} description={SITE_DESCRIPTION}>
   <Hero title={SITE_TITLE} description={SITE_DESCRIPTION} image={logoImage} />
-  <blockquote class="border-l-4 pl-8 my-8">
-    <p>"Run when you can, walk if you have to, crawl if you must; just never give
-    up"</p><em>- Dean Karnazes</em>
-  </blockquote>
   <div class="flex flex-col gap-4 mt-2">
-    {blogs.length > 0 && (<h3 class="text-2xl">Blogs</h3>
+    {blogs.length > 0 && (<h3 class="text-2xl">Updates</h3>
     <section class="flex flex-col lg:flex-row flex-3 w-full gap-16">
-      {blogs.map((post) => <BlogCardLink post={post} />)}
+      {blogs.map((item) => <GeneralCardLink {item} />)}
     </section>
     <div class="flex flex-rol justify-end">
       <a class="link
       link-primary
-      link-hover" href="/blogs"> More </a>
+      link-hover" href="/posts"> More posts</a>
     </div>)}
-    {pinnedGames.length > 0 && (<h3 class="text-2xl">Game Jams</h3>
+    {games.length > 0 && (<h3 class="text-2xl">Games</h3>
     <section class="flex flex-col lg:flex-row flex-3 w-full gap-16">
-      {pinnedGames.map((game) => <JamCardLink {game} />)}
+      {games.map((item) => <GameCardLink {item} />)}
     </section>
     <div class="flex flex-rol justify-end">
       <a class="link
       link-primary
-      link-hover" href="/jams"> More </a>
+      link-hover" href="/games">More games</a>
     </div>)}
   </div>
 </Layout>

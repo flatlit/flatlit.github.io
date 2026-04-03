@@ -1,0 +1,18 @@
+---
+import { getCollection } from "astro:content";
+import GeneralCardLink from "../../components/GeneralCardLink.astro";
+import { SITE_DESCRIPTION, SITE_TITLE } from "../../consts";
+import Layout from "../../layouts/Page.astro";
+import { publishedFilter, publishedOrder } from "../../utils";
+
+const posts = (await getCollection("posts", publishedFilter)).sort(
+  publishedOrder,
+);
+---
+
+<Layout title={SITE_TITLE} description={SITE_DESCRIPTION}>
+  <h1 class="text-4xl mb-8">Posts</h1>
+  <section class="grid grid-cols-2 gap-16 justify-items-center">
+    {posts.map((item) => <GeneralCardLink {item} />)}
+  </section>
+</Layout>

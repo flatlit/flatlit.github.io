@@ -1,11 +1,10 @@
 ---
-pinned: true
 title: "Rummage"
 description: "Someone has added extra pieces to your jigsaw - find them and quick!"
-pubDate: "01 Feb 2026"
+publishedDate: "01 Feb 2026"
 jamName: Queble's Jam - 2026
 jamLink: https://itch.io/jam/quebles-jam-2026
-playLink: https://flatlit.itch.io/rummage
+itchLink: https://flatlit.itch.io/rummage
 videoLink: https://www.youtube.com/watch?v=xGqqbiKUVe4
 published: true
 ---

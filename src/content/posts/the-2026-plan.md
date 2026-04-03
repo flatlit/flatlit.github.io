@@ -1,8 +1,7 @@
 ---
 title: "The 2026 Plan"
 description: "New years resolutions at Flat Lit"
-pubDate: "01 Jan 2026"
-published: true
+publishedDate: "01 Jan 2026"
 ---
 
 This is the year of shipping game - not just game development.

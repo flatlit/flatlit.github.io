@@ -1,0 +1,40 @@
+---
+import { getCollection } from "astro:content";
+import GeneralCardLink from "../../components/GeneralCardLink.astro";
+import { SITE_DESCRIPTION, SITE_TITLE } from "../../consts";
+import Layout from "../../layouts/Page.astro";
+import { publishedFilter, publishedOrder } from "../../utils";
+import SeriesCardLink from "../../components/SeriesCardLink.astro";
+
+const series = (await getCollection("series", publishedFilter)).sort(
+  publishedOrder,
+);
+const articles = (await getCollection("articles", publishedFilter)).sort(
+  publishedOrder,
+);
+
+const articlesInSeries = series
+  .map((s) => s.id)
+  .reduceRight(
+    (acc, s) => {
+      acc[s] = articles.filter((a) => a.data.series == s).length;
+      return acc;
+    },
+    {} as Record<string, number>,
+  );
+
+// TODO include number of articles in the link
+---
+
+<Layout title={SITE_TITLE} description={SITE_DESCRIPTION}>
+  <h1 class="text-4xl mb-8">Series</h1>
+  <section class="grid grid-cols-2 gap-16 justify-items-center">
+    {
+      series
+        .filter((s) => s.id in articlesInSeries)
+        .map((item) => (
+          <SeriesCardLink {item} numArticles={articlesInSeries[item.id] ?? 0} />
+        ))
+    }
+  </section>
+</Layout>

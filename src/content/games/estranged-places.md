@@ -1,11 +1,10 @@
 ---
-pinned: true
 title: "Estranged Plaices"
 description: "It's all about sneaking more letters into the theme (Strange Places)!"
-pubDate: "01 March 2026"
+publishedDate: "01 March 2026"
 jamName: Brackeys 2026.1
 jamLink: https://itch.io/jam/brackeys-15
-playLink: https://flatlit.itch.io/estranged-plaices
+itchLink: https://flatlit.itch.io/estranged-plaices
 published: true
 ---
 

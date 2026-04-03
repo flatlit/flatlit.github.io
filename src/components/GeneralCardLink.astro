@@ -1,0 +1,36 @@
+---
+import { Image } from "astro:assets";
+import type { CollectionEntry, CollectionKey } from "astro:content";
+import FormattedDate from "./FormattedDate.astro";
+
+type Props = {
+  item: Pick<CollectionEntry<CollectionKey>, "id" | "data" | "collection">;
+};
+const { item } = Astro.props;
+---
+
+<a href={`/${item.collection}/${item.id}/`}>
+  <div class="card bg-base-100 w-96 shadow-sm">
+    {
+      item.data.heroImage && (
+        <figure>
+          <Image
+            width={720}
+            height={360}
+            src={item.data.heroImage}
+            alt={item.data.title}
+          />
+        </figure>
+      )
+    }
+    <div class="card-body">
+      <h2 class="card-title">{item.data.title}</h2>
+      <>
+        <p>{item.data.description}</p>
+        <div class="flex justify-end text-xs">
+          <FormattedDate date={item.data.publishedDate} />
+        </div>
+      </>
+    </div>
+  </div>
+</a>
