@@ -1,14 +1,19 @@
 ---
 import FormattedDate from "./FormattedDate.astro";
 
+// TODO can we derive these from the CollectionEntry
+// that uses something Flatten i guess to get a union of possibilities
+
 type Props = {
-  pubDate?: Date;
+  publishedDate?: Date;
   updatedDate?: Date;
   jamName?: string;
   jamLink?: string;
   sourceLink?: string;
   videoLink?: string;
-  playLink?: string;
+  itchLink?: string;
+  steamLink?: string;
+  series?: string;
 };
 
 const {
@@ -16,17 +21,33 @@ const {
   jamLink,
   sourceLink,
   videoLink,
-  playLink,
-  pubDate,
+  itchLink,
+  steamLink,
+  publishedDate,
   updatedDate,
+  series,
 } = Astro.props;
 ---
 
 <div class="p-2 text-sm flex justify-end flex-row gap-2 text-accent font-bold">
   {
-    playLink && (
-      <a class="link link-hover" href={playLink} target="_blank">
-        Play
+    series && (
+      <a class="link link-hover" href={`/${series}`}>
+        Back to series
+      </a>
+    )
+  }
+  {
+    steamLink && (
+      <a class="link link-hover" href={steamLink} target="_blank">
+        Buy [Steam]
+      </a>
+    )
+  }
+  {
+    itchLink && (
+      <a class="link link-hover" href={itchLink} target="_blank">
+        Play [Itch.io]
       </a>
     )
   }
@@ -52,14 +73,14 @@ const {
     )
   }
   {
-    pubDate && (
+    publishedDate && (
       <span>
-        <FormattedDate date={pubDate} />
+        <FormattedDate date={publishedDate} />
       </span>
     )
   }
   {
-    updatedDate && (
+    updatedDate && updatedDate != publishedDate && (
       <span class="italic">
         Updated <FormattedDate date={updatedDate} />
       </span>

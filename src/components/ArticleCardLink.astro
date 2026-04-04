@@ -25,15 +25,13 @@ const { item } = Astro.props;
     }
     <div class="card-body">
       <h2 class="card-title">{item.data.title}</h2>
-      <>
-        <p>{item.data.description}</p>
-        <div class="flex justify-end text-xs gap-2">
-          <span class="uppercase">
-            {item.data.series.replaceAll("-", " ")}
-          </span>
-          <FormattedDate date={item.data.publishedDate} />
-        </div>
-      </>
+      <p>{item.data.description}</p>
+      <div class="flex justify-end text-xs gap-2">
+        <span class="uppercase">
+          {item.data.series.replaceAll("-", " ")}
+        </span>
+        <FormattedDate date={item.data.publishedDate} />
+      </div>
     </div>
   </div>
 </a>

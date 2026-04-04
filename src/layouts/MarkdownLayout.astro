@@ -1,5 +1,5 @@
 ---
-// This will reade
+// This will render the slot within markdown block
 
 import type { CollectionEntry, CollectionKey } from "astro:content";
 import Hero from "../components/Hero.astro";
@@ -14,7 +14,7 @@ const { title, description, heroImage } = Astro.props;
 <Layout {title} {description}>
   <Hero {title} {description} image={heroImage} />
   <Meta {...Astro.props} />
-  <!-- <div class="mx-auto"> -->
-  <slot />
-  <!-- </div> -->
+  <div class="prose mx-auto">
+    <slot />
+  </div>
 </Layout>

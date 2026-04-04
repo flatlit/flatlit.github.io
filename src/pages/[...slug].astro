@@ -1,6 +1,11 @@
 ---
+// This is to render our series/articles at the top level
+// ie so series look like they are top level
+// I'm debating moving this under back under series to be honest
+// as series/taming-godot/article-name isn't really any different
+
 import { type CollectionEntry, getCollection, render } from "astro:content";
-import Layout from "../layouts/GeneralLayout.astro";
+import Layout from "../layouts/MarkdownLayout.astro";
 import { publishedFilter } from "../utils";
 
 export async function getStaticPaths() {
