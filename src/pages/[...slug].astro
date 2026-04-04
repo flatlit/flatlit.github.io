@@ -12,11 +12,14 @@ export async function getStaticPaths() {
   }));
 }
 type Props = CollectionEntry<"articles">;
-
 const item = Astro.props;
+
+const series = (
+  await getCollection("series", (s) => s.id === item.data.series)
+)[0];
 const { Content } = await render(item);
 ---
 
-<Layout {...item.data}>
+<Layout {...item.data} heroImage={item.data.heroImage ?? series.data.heroImage}>
   <Content />
 </Layout>

@@ -11,7 +11,7 @@ const { item, numArticles } = Astro.props;
 ---
 
 <a href={`/${item.id}/`}>
-  <div class="card bg-base-100 w-96 shadow-sm">
+  <div class="card bg-base-100 w-full shadow-sm">
     {
       item.data.heroImage && (
         <figure>
@@ -28,12 +28,14 @@ const { item, numArticles } = Astro.props;
       <h2 class="card-title">{item.data.title}</h2>
       <p>{item.data.description}</p>
       <div class="flex justify-end text-xs gap-2">
-        <span>
-          {numArticles}&nbsp;
-          {numArticles == 1 ? "article" : "articles"}
-        </span>
-
-        <FormattedDate date={item.data.publishedDate} />
+        {
+          numArticles != null && (
+            <span>
+              {numArticles}&nbsp;
+              {numArticles == 1 ? "article" : "articles"}
+            </span>
+          )
+        }
       </div>
     </div>
   </div>

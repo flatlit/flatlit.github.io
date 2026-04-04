@@ -1,51 +1,133 @@
 ---
+import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
 import logoImage from "../assets/logo.png";
+import ArticleCardLink from "../components/ArticleCardLink.astro";
 import GameCardLink from "../components/GameCardLink.astro";
 import GeneralCardLink from "../components/GeneralCardLink.astro";
-import Hero from "../components/Hero.astro";
+import SeriesCardLink from "../components/SeriesCardLink.astro";
 import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
 import Layout from "../layouts/Page.astro";
-import { publishedFilter, publishedOrder } from "../utils";
+import { publishedFilter, publishedOrder, titleOrder } from "../utils";
 
 const MAX_GAMES = 3;
 const MAX_BLOGS = 3;
+const MAX_ARTICLES = 3;
 
-const games = (
-  await getCollection("games", (e) => e.data.publishedDate && e.data.published)
-)
+const games = (await getCollection("games", publishedFilter))
   .sort(publishedOrder)
   .slice(0, MAX_GAMES + 1);
 
-const blogs = (await getCollection("posts", publishedFilter))
+const posts = (await getCollection("posts", publishedFilter))
   .sort(publishedOrder)
   .slice(0, MAX_BLOGS + 1);
 
-// Another good quote from same guy
-// “I run because if I didn’t, I’d be sluggish and glum and spend too much time on the couch. I run to breathe the fresh air. I run to explore. I run to escape the ordinary. I run...to savor the trip along the way. Life becomes a little more vibrant, a little more intense. I like that.”
-// Dean Karnazes
+const articles = (await getCollection("articles", publishedFilter))
+  .sort(publishedOrder)
+  .slice(0, MAX_ARTICLES + 1);
+
+const series = (await getCollection("series", publishedFilter)).sort(
+  titleOrder,
+);
 ---
 
 <Layout title={SITE_TITLE} description={SITE_DESCRIPTION}>
-  <Hero title={SITE_TITLE} description={SITE_DESCRIPTION} image={logoImage} />
+  <div class="bg-base-100">
+    <div class="flex flex-col md:flex-row items-center justify-center gap-4">
+      <Image
+        class="max-w-sm rounded-lg shadow-2xl"
+        height={256}
+        src={logoImage}
+        alt="Flat Lit Studio Logo"
+      />
+      <div class="flex flex-col items-center justify-center">
+        <h1 class="text-5xl font-bold">{SITE_TITLE}</h1>
+        <h2 class="text-2xl italic py-6">{SITE_DESCRIPTION}</h2>
+      </div>
+    </div>
+  </div>
   <div class="flex flex-col gap-4 mt-2">
-    {blogs.length > 0 && (<h3 class="text-2xl">Updates</h3>
-    <section class="flex flex-col lg:flex-row flex-3 w-full gap-16">
-      {blogs.map((item) => <GeneralCardLink {item} />)}
-    </section>
-    <div class="flex flex-rol justify-end">
-      <a class="link
-      link-primary
-      link-hover" href="/posts"> More posts</a>
-    </div>)}
-    {games.length > 0 && (<h3 class="text-2xl">Games</h3>
-    <section class="flex flex-col lg:flex-row flex-3 w-full gap-16">
-      {games.map((item) => <GameCardLink {item} />)}
-    </section>
-    <div class="flex flex-rol justify-end">
-      <a class="link
-      link-primary
-      link-hover" href="/games">More games</a>
-    </div>)}
+    {
+      posts.length > 0 && (
+        <section class="bg-base-200 p-4">
+          <h3 class="text-2xl mb-2">Updates</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {posts.map((item) => (
+              <GeneralCardLink {item} />
+            ))}
+          </div>
+          <div class="flex flex-rol justify-end">
+            <a
+              class="link
+        link-primary
+        link-hover"
+              href="/posts"
+            >
+              {" "}
+              More posts
+            </a>
+          </div>
+        </section>
+      )
+    }
+
+    {
+      games.length > 0 && (
+        <section class="bg-base-300 p-4 w-full">
+          <h3 class="text-2xl  mb-2">Games</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {games.map((item) => (
+              <GameCardLink {item} />
+            ))}
+          </div>
+          <div class="flex flex-rol justify-end">
+            <a
+              class="link
+        link-primary
+        link-hover"
+              href="/games"
+            >
+              More games
+            </a>
+          </div>
+        </section>
+      )
+    }
+
+    {
+      series.length > 0 && (
+        <section class="bg-base-200 p-4">
+          <h3 class="text-2xl mb-2">Series</h3>
+          <div class="grid grid-cols-1 gap-4">
+            {series.map((item) => (
+              <SeriesCardLink {item} />
+            ))}
+          </div>
+        </section>
+      )
+    }
+
+    {
+      articles.length > 0 && (
+        <section class="bg-base-300 p-4">
+          <h3 class="text-2xl mb-2">Recent articles</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {articles.map((item) => (
+              <ArticleCardLink {item} />
+            ))}
+          </div>
+          <div class="flex flex-rol justify-end">
+            <a
+              class="link
+        link-primary
+        link-hover"
+              href="/series"
+            >
+              More articles in series
+            </a>
+          </div>
+        </section>
+      )
+    }
   </div>
 </Layout>

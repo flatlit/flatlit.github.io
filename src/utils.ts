@@ -14,3 +14,12 @@ export const publishedOrder = (
     data: { publishedDate: Date };
   },
 ) => b.data.publishedDate.valueOf() - a.data.publishedDate.valueOf();
+
+export const titleOrder = (
+  a: {
+    data: { title: string };
+  },
+  b: {
+    data: { title: string };
+  },
+) => b.data.title.localeCompare(a.data.title);

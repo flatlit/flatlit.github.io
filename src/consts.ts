@@ -2,7 +2,7 @@
 // You can import this data from anywhere in your site by using the `import` keyword.
 
 export const SITE_TITLE = "Flat Lit Studios";
-export const SITE_DESCRIPTION = "Developing games or gaming development?";
+export const SITE_DESCRIPTION = "Developing games. Gamifying development.";
 
 export const ITCH_IO_URL = "https://flatlit.itch.io";
 export const BLUESKY_HANDLE = "@flatlit.bsky.social";
