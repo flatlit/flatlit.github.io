@@ -4,13 +4,25 @@ import Bluesky from "simple-icons-astro/Bluesky";
 import Github from "simple-icons-astro/Github";
 import Itchdotio from "simple-icons-astro/Itchdotio";
 import Youtube from "simple-icons-astro/Youtube";
+// import Steam from "simple-icons-astro/Steam";
+// import TikTok from "simple-icons-astro/Tiktok";
+// import Instagram from "simple-icons-astro/Instagram";
+// import Reddit from "simple-icons-astro/Reddit";
+// import Kofi from "simple-icons-astro/Kofi";
+// import Patreon from "simple-icons-astro/Patreon";
 
 import {
   BLUESKY_URL,
   GITHUB_URL,
+  // INSTAGRAM_URL,
   ITCH_IO_URL,
+  // KOFI_URL,
+  // PATREON_URL,
+  // REDDIT_URL,
   SITE_DESCRIPTION,
   SITE_TITLE,
+  // STEAM_URL,
+  // TIKTOK_URL,
   YOUTUBE_URL,
 } from "../consts";
 
@@ -27,7 +39,8 @@ const today = new Date();
         <br />
         {SITE_DESCRIPTION}
       </p>
-      <p>
+
+      <p class="mt-2">
         &copy; {today.getFullYear()}&nbsp;{SITE_TITLE}
       </p>
       <p>
@@ -66,13 +79,28 @@ const today = new Date();
       <a href="/games">Games</a>
       <a href="/series">Series</a>
     </div>
+  </nav>
+  <nav class="flex flex-col gap-2">
     <h6 class="footer-title">Links</h6>
-    <div class="grid grid-flow-col gap-4">
+    <div class="grid grid-flow-col gap-2">
       <a href={BLUESKY_URL} target="_blank"><Bluesky /></a>
       <a href={GITHUB_URL} target="_blank"><Github /></a>
       <a href={ITCH_IO_URL} target="_blank"><Itchdotio /></a>
       <a href={YOUTUBE_URL} target="_blank"><Youtube /></a>
+      <!-- 
+      <a href={REDDIT_URL} target="_blank"><Reddit /></a>
+      <a href={STEAM_URL} target="_blank"><Steam /></a>
+      <a href={INSTAGRAM_URL} target="_blank"><Instagram /></a>
+      <a href={TIKTOK_URL} target="_blank"><TikTok /></a> 
+      <a href={PATREON_URL} target="_blank"><Patreon /></a>
+      <a href={KOFI_URL} target="_blank"><Kofi /></a>
+      -->
       <a href={new URL("rss.xml", Astro.site)} target="_blank"><RSS /></a>
     </div>
+    <!-- <h6 class="footer-title">Sponsor</h6>
+    <div class="grid grid-flow-col gap-2">
+      <a href={PATREON_URL} target="_blank"><Patreon /></a>
+      <a href={KOFI_URL} target="_blank"><Kofi /></a>
+    </div> -->
   </nav>
 </footer>

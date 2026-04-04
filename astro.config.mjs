@@ -8,7 +8,7 @@ import remarkBlockContainers from "remark-block-containers";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://flatlit.github.io",
+  site: "https://flatlit.com",
   base: "/",
   integrations: [mdx(), sitemap()],
   vite: {
