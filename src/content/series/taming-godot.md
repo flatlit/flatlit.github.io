@@ -2,8 +2,9 @@
 id: taming-godot
 title: Taming Godot
 description: Making Godot work for you
-publishedDate: "3 April 2026"
-published: true
+publishedDate: "6 April 2026"
+sourceLink: https://github.com/flatlit/taming-godot-series
+published: false
 ---
 
 Godot is a very flexible engine - maybe even too flexible.

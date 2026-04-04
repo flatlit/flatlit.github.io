@@ -54,7 +54,7 @@ const games = defineCollection({
       videoLink: z.url().optional(), // youtube
       itchLink: z.url().optional(), // itch
       steamLink: z.url().optional(), // steam
-      repoLink: z.url().optional(), // github
+      sourceLink: z.url().optional(), // github
     }),
 });
 
@@ -113,6 +113,7 @@ const series = defineCollection({
     z.object({
       ...common,
       heroImage: image().optional(),
+      sourceLink: z.url().optional(), // github - I'm hoping we can get away with one per series
     }),
 });
 
