@@ -1,8 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import GameCardLink from "../../components/GameCardLink.astro";
-import { SITE_DESCRIPTION, SITE_TITLE } from "../../consts";
-import Layout from "../../layouts/Page.astro";
+import Layout from "../../layouts/GeneralLayout.astro";
 import { publishedFilter, publishedOrder } from "../../utils";
 
 const items = (await getCollection("games", publishedFilter)).sort(
@@ -10,8 +9,7 @@ const items = (await getCollection("games", publishedFilter)).sort(
 );
 ---
 
-<Layout title={SITE_TITLE} description={SITE_DESCRIPTION}>
-  <h1 class="text-4xl mb-8">Games</h1>
+<Layout title="Games">
   <section class="grid grid-cols-2 gap-16">
     {items.map((item) => <GameCardLink {item} />)}
   </section>

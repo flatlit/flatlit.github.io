@@ -6,7 +6,7 @@ import Hero from "../components/Hero.astro";
 import Meta from "../components/Meta.astro";
 import Layout from "./Page.astro";
 
-type Props = CollectionEntry<CollectionKey>["data"];
+type Props = Partial<CollectionEntry<CollectionKey>["data"]>;
 
 const { title, description, heroImage } = Astro.props;
 ---
