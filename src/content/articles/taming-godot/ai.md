@@ -2,7 +2,7 @@
 title: "AI"
 description: "What's my AI stance"
 publishedDate: "01 Mar 2026"
-published: true
+published: false
 series: "taming-godot"
 ---
 

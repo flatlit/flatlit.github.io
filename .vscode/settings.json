@@ -1,5 +1,12 @@
 {
-  "cSpell.words": ["Blockbench", "daisyui", "Godot", "Itchdotio"],
+  "cSpell.words": [
+    "Blockbench",
+    "daisyui",
+    "flatlit",
+    "flatlitstudios",
+    "Godot",
+    "Itchdotio"
+  ],
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "astro-build.astro-vscode"
 }

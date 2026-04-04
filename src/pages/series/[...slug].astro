@@ -6,11 +6,21 @@
 
 import { type CollectionEntry, getCollection, render } from "astro:content";
 import Layout from "../../layouts/MarkdownLayout.astro";
-import { publishedFilter } from "../../utils";
+import {
+  publishedFilter,
+  findPublishedSeriesIds,
+  articleInPublishedSeriesFilter,
+  findSeriesOfArticle,
+} from "../../utils";
 
 export async function getStaticPaths() {
-  // TODO also the series is published
-  const items = await getCollection("articles", publishedFilter);
+  const publishedSeriesIds = await findPublishedSeriesIds();
+  const items = await getCollection(
+    "articles",
+    (e) =>
+      publishedFilter(e) &&
+      articleInPublishedSeriesFilter(publishedSeriesIds, e),
+  );
   return items.map((item) => ({
     params: { slug: item.id },
     props: item,
@@ -19,12 +29,13 @@ export async function getStaticPaths() {
 type Props = CollectionEntry<"articles">;
 const item = Astro.props;
 
-const series = (
-  await getCollection("series", (s) => s.id === item.data.series)
-)[0];
+const series = await findSeriesOfArticle(item);
 const { Content } = await render(item);
 ---
 
-<Layout {...item.data} heroImage={item.data.heroImage ?? series.data.heroImage}>
+<Layout
+  {...item.data}
+  heroImage={item.data.heroImage ?? series?.data.heroImage}
+>
   <Content />
 </Layout>

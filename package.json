@@ -8,6 +8,7 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
+    "serve": "astro preview",
     "astro": "astro",
     "fix": "npx @biomejs/biome check --write",
     "update": "npx npm-check-updates -u && npm i"

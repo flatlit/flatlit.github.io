@@ -8,7 +8,14 @@ import GeneralCardLink from "../components/GeneralCardLink.astro";
 import SeriesCardLink from "../components/SeriesCardLink.astro";
 import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
 import Layout from "../layouts/Page.astro";
-import { publishedFilter, publishedOrder, titleOrder } from "../utils";
+import {
+  articleInPublishedSeriesFilter,
+  findPublishedSeriesIds,
+  findSeriesIdWithPublishedArticles,
+  publishedFilter,
+  publishedOrder,
+  titleOrder,
+} from "../utils";
 
 const MAX_GAMES = 3;
 const MAX_BLOGS = 3;
@@ -22,13 +29,27 @@ const posts = (await getCollection("posts", publishedFilter))
   .sort(publishedOrder)
   .slice(0, MAX_BLOGS + 1);
 
-const articles = (await getCollection("articles", publishedFilter))
+// Display recent articles, but only though published in a published series
+const publishedSeriesId = await findPublishedSeriesIds();
+const articles = (
+  await getCollection(
+    "articles",
+    (e) =>
+      publishedFilter(e) &&
+      articleInPublishedSeriesFilter(publishedSeriesId, e),
+  )
+)
   .sort(publishedOrder)
   .slice(0, MAX_ARTICLES + 1);
 
-const series = (await getCollection("series", publishedFilter)).sort(
-  titleOrder,
-);
+// Display series, but only when they have some content
+const seriesIdWithPublishedArticles = await findSeriesIdWithPublishedArticles();
+const series = (
+  await getCollection(
+    "series",
+    (e) => publishedFilter(e) && seriesIdWithPublishedArticles.has(e.id),
+  )
+).sort(titleOrder);
 ---
 
 <Layout>

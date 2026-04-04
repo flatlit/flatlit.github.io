@@ -2,7 +2,11 @@
 import { getCollection } from "astro:content";
 import SeriesCardLink from "../../components/SeriesCardLink.astro";
 import Layout from "../../layouts/GeneralLayout.astro";
-import { publishedFilter, publishedOrder } from "../../utils";
+import {
+  ALLOW_UNPUBLISHED,
+  publishedFilter,
+  publishedOrder,
+} from "../../utils";
 
 const series = (await getCollection("series", publishedFilter)).sort(
   publishedOrder,
@@ -11,6 +15,7 @@ const articles = (await getCollection("articles", publishedFilter)).sort(
   publishedOrder,
 );
 
+// This count is both a filter for unpublished series and provides series article count
 const articlesInSeries = series
   .map((s) => s.id)
   .reduceRight(
@@ -20,15 +25,13 @@ const articlesInSeries = series
     },
     {} as Record<string, number>,
   );
-
-// TODO include number of articles in the link
 ---
 
 <Layout title="Series">
   <section class="grid grid-cols-1 gap-16">
     {
       series
-        .filter((s) => s.id in articlesInSeries)
+        .filter((s) => ALLOW_UNPUBLISHED || s.id in articlesInSeries)
         .map((item) => (
           <SeriesCardLink {item} numArticles={articlesInSeries[item.id] ?? 0} />
         ))

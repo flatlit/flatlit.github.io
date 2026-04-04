@@ -2,18 +2,25 @@
 import { type CollectionEntry, getCollection, render } from "astro:content";
 import ArticleCardLink from "../../../components/ArticleCardLink.astro";
 import Layout from "../../../layouts/GeneralLayout.astro";
-import { publishedFilter, publishedOrder } from "../../../utils";
+import {
+  publishedFilter,
+  publishedOrder,
+  findSeriesIdWithPublishedArticles,
+  seriesHasPublishedArticleFilter,
+} from "../../../utils";
 
 export async function getStaticPaths() {
-  const series = await getCollection("series", publishedFilter);
-  const articles = await getCollection("articles", publishedFilter);
-  const seriesWithArticles = new Set(articles.map((p) => p.data.series));
-  return series
-    .filter((s) => seriesWithArticles.has(s.id))
-    .map((item) => ({
-      params: { series: item.id },
-      props: item,
-    }));
+  const seriesWithArticles = await findSeriesIdWithPublishedArticles();
+  const series = await getCollection(
+    "series",
+    (e) =>
+      publishedFilter(e) &&
+      seriesHasPublishedArticleFilter(seriesWithArticles, e),
+  );
+  return series.map((item) => ({
+    params: { series: item.id },
+    props: item,
+  }));
 }
 
 type Props = CollectionEntry<"series">;
