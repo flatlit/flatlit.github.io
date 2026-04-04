@@ -3,9 +3,9 @@ import { type CollectionEntry, getCollection, render } from "astro:content";
 import ArticleCardLink from "../../../components/ArticleCardLink.astro";
 import Layout from "../../../layouts/GeneralLayout.astro";
 import {
+  findSeriesIdWithPublishedArticles,
   publishedFilter,
   publishedOrder,
-  findSeriesIdWithPublishedArticles,
   seriesHasPublishedArticleFilter,
 } from "../../../utils";
 

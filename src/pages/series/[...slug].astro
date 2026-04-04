@@ -7,10 +7,10 @@
 import { type CollectionEntry, getCollection, render } from "astro:content";
 import Layout from "../../layouts/MarkdownLayout.astro";
 import {
-  publishedFilter,
-  findPublishedSeriesIds,
   articleInPublishedSeriesFilter,
+  findPublishedSeriesIds,
   findSeriesOfArticle,
+  publishedFilter,
 } from "../../utils";
 
 export async function getStaticPaths() {
