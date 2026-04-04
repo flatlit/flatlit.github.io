@@ -10,7 +10,7 @@ type Props = {
 const { item, numArticles } = Astro.props;
 ---
 
-<a href={`/${item.id}/`}>
+<a href={`/${item.collection}/${item.id}/`}>
   <div class="card bg-base-100 w-full shadow-sm">
     {
       item.data.heroImage && (

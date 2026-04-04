@@ -5,8 +5,8 @@
 // as series/taming-godot/article-name isn't really any different
 
 import { type CollectionEntry, getCollection, render } from "astro:content";
-import Layout from "../layouts/MarkdownLayout.astro";
-import { publishedFilter } from "../utils";
+import Layout from "../../layouts/MarkdownLayout.astro";
+import { publishedFilter } from "../../utils";
 
 export async function getStaticPaths() {
   // TODO also the series is published

@@ -1,8 +1,8 @@
 ---
 import { type CollectionEntry, getCollection, render } from "astro:content";
-import ArticleCardLink from "../../components/ArticleCardLink.astro";
-import Layout from "../../layouts/GeneralLayout.astro";
-import { publishedFilter, publishedOrder } from "../../utils";
+import ArticleCardLink from "../../../components/ArticleCardLink.astro";
+import Layout from "../../../layouts/GeneralLayout.astro";
+import { publishedFilter, publishedOrder } from "../../../utils";
 
 export async function getStaticPaths() {
   const series = await getCollection("series", publishedFilter);
