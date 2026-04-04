@@ -19,7 +19,7 @@
     "@fontsource-variable/oswald": "^5.2.8",
     "@lucide/astro": "^0.576.0",
     "@tailwindcss/vite": "^4.2.1",
-    "astro": "^5.17.1",
+    "astro": "^5.18.1",
     "daisyui": "^5.5.19",
     "remark-block-containers": "^1.1.0",
     "sharp": "^0.34.3",
