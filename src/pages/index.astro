@@ -6,7 +6,7 @@ import ArticleCardLink from "../components/ArticleCardLink.astro";
 import GameCardLink from "../components/GameCardLink.astro";
 import GeneralCardLink from "../components/GeneralCardLink.astro";
 import SeriesCardLink from "../components/SeriesCardLink.astro";
-import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
+import { POSTS_NAME, SITE_DESCRIPTION, SITE_TITLE } from "../consts";
 import Layout from "../layouts/Page.astro";
 import {
   articleInPublishedSeriesFilter,
@@ -18,7 +18,7 @@ import {
 } from "../utils";
 
 const MAX_GAMES = 3;
-const MAX_BLOGS = 3;
+const MAX_POSTS = 3;
 const MAX_ARTICLES = 3;
 
 const games = (await getCollection("games", publishedFilter))
@@ -27,7 +27,7 @@ const games = (await getCollection("games", publishedFilter))
 
 const posts = (await getCollection("posts", publishedFilter))
   .sort(publishedOrder)
-  .slice(0, MAX_BLOGS + 1);
+  .slice(0, MAX_POSTS + 1);
 
 // Display recent articles, but only though published in a published series
 const publishedSeriesId = await findPublishedSeriesIds();
@@ -71,21 +71,15 @@ const series = (
     {
       posts.length > 0 && (
         <section class="bg-base-200 p-4">
-          <h3 class="text-2xl mb-2">Updates</h3>
+          <h3 class="text-2xl mb-2">{POSTS_NAME}</h3>
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {posts.map((item) => (
               <GeneralCardLink {item} />
             ))}
           </div>
           <div class="flex flex-rol justify-end">
-            <a
-              class="link
-        link-primary
-        link-hover"
-              href="/posts"
-            >
-              {" "}
-              More posts
+            <a class="link link-primary link-hover" href="/posts">
+              More updates
             </a>
           </div>
         </section>
@@ -102,12 +96,7 @@ const series = (
             ))}
           </div>
           <div class="flex flex-rol justify-end">
-            <a
-              class="link
-        link-primary
-        link-hover"
-              href="/games"
-            >
+            <a class="link link-primary link-hover" href="/games">
               More games
             </a>
           </div>
@@ -138,12 +127,7 @@ const series = (
             ))}
           </div>
           <div class="flex flex-rol justify-end">
-            <a
-              class="link
-        link-primary
-        link-hover"
-              href="/series"
-            >
+            <a class="link link-primary link-hover" href="/series">
               More articles in series
             </a>
           </div>

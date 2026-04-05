@@ -4,6 +4,9 @@
 export const SITE_TITLE = "Flat Lit Studios";
 export const SITE_DESCRIPTION = "Developing games. Gamifying development.";
 
+// I'm too indecisive if this updates, blog or dev log
+export const POSTS_NAME = "Dev Log";
+
 export const ITCH_IO_HANDLE = "flatlit";
 export const ITCH_IO_URL = `https://${ITCH_IO_HANDLE}.itch.io`;
 export const BLUESKY_HANDLE = "@flatlit.bsky.social";

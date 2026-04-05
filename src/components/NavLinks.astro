@@ -1,4 +1,5 @@
 ---
+import { POSTS_NAME } from "../consts";
 import HeaderLink from "./HeaderLink.astro";
 ---
 
@@ -11,9 +12,9 @@ import HeaderLink from "./HeaderLink.astro";
 <li>
   <HeaderLink href="/series">Series</HeaderLink>
 </li>
-<!-- <li>
-  <HeaderLink href="/posts">Updates</HeaderLink>
-</li> -->
+<li>
+  <HeaderLink href="/posts">{POSTS_NAME}</HeaderLink>
+</li>
 <li>
   <HeaderLink href="/faq">FAQ</HeaderLink>
 </li>

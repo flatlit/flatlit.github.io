@@ -3,7 +3,7 @@ import { glob } from "astro/loaders";
 import { z } from "astro/zod";
 
 const common = {
-  published: z.boolean().default(false),
+  published: z.boolean().default(true),
   title: z.string(),
   description: z.string(),
   publishedDate: z.coerce.date(),
