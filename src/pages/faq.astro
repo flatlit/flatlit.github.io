@@ -1,4 +1,5 @@
 ---
+import { BLUESKY_URL } from "../consts";
 import Layout from "../layouts/MarkdownLayout.astro";
 
 // TODO the fact this is HTML rather than markdown is annoying
@@ -51,5 +52,20 @@ import Layout from "../layouts/MarkdownLayout.astro";
     The building logo was created in <a href="https://www.blockbench.net"
       >Blockbench</a
     > and rendered inside <a href="https://godotengine.org">Godot</a>.
+  </p>
+  <p>
+    This site uses EU based, privacy friendly <a
+      href="https://simpleanalytics.com">Simple Analytics</a
+    > so I can see which content visitors are interested in. Neither I nor Simple
+    Analytics <a href="https://dashboard.simpleanalytics.com/no-tracking"
+      >track users</a
+    >.
+  </p>
+  <p>
+    The content of this site is available under <a
+      href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
+      >Creative Commons Attribution NonCommercial ShareAlike 4.0 International</a
+    >. Please get it touch via <a href={BLUESKY_URL} target="_blank">Bluesky</a> if
+    you wish to reuse our content.
   </p>
 </Layout>
