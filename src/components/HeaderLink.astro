@@ -11,6 +11,6 @@ const { href, ...props } = Astro.props;
 // const isActive = href === pathname || href === "/" + (subpath?.[0] || "");
 ---
 
-<a href={href} {...props}>
+<a href={href} {...props} class="text-lg">
   <slot />
 </a>
