@@ -17,17 +17,17 @@ import {
   titleOrder,
 } from "../utils";
 
-const MAX_GAMES = 3;
-const MAX_POSTS = 3;
-const MAX_ARTICLES = 3;
+const MAX_GAMES = 5;
+const MAX_POSTS = 5;
+const MAX_ARTICLES = 5;
 
 const games = (await getCollection("games", publishedFilter))
   .sort(publishedOrder)
-  .slice(0, MAX_GAMES + 1);
+  .slice(0, MAX_GAMES);
 
 const posts = (await getCollection("posts", publishedFilter))
   .sort(publishedOrder)
-  .slice(0, MAX_POSTS + 1);
+  .slice(0, MAX_POSTS);
 
 // Display recent articles, but only though published in a published series
 const publishedSeriesId = await findPublishedSeriesIds();
@@ -40,7 +40,7 @@ const articles = (
   )
 )
   .sort(publishedOrder)
-  .slice(0, MAX_ARTICLES + 1);
+  .slice(0, MAX_ARTICLES);
 
 // Display series, but only when they have some content
 const seriesIdWithPublishedArticles = await findSeriesIdWithPublishedArticles();
@@ -76,9 +76,10 @@ const series = (
             {posts.map((item) => (
               <GeneralCardLink {item} />
             ))}
-          </div>
-          <div class="flex flex-rol justify-end">
-            <a class="link link-primary link-hover" href="/posts">
+            <a
+              class="flex flex-rol justify-center items-center link link-hover hover:bg-base-100"
+              href="/posts"
+            >
               More updates
             </a>
           </div>
@@ -94,9 +95,10 @@ const series = (
             {games.map((item) => (
               <GameCardLink {item} />
             ))}
-          </div>
-          <div class="flex flex-rol justify-end">
-            <a class="link link-primary link-hover" href="/games">
+            <a
+              class="flex flex-rol justify-center items-center link link-hover hover:bg-base-100"
+              href="/games"
+            >
               More games
             </a>
           </div>
@@ -125,9 +127,10 @@ const series = (
             {articles.map((item) => (
               <ArticleCardLink {item} />
             ))}
-          </div>
-          <div class="flex flex-rol justify-end">
-            <a class="link link-primary link-hover" href="/series">
+            <a
+              class="flex flex-rol justify-center items-center link link-hover hover:bg-base-100"
+              href="/series"
+            >
               More articles in series
             </a>
           </div>
