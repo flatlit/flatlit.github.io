@@ -1,0 +1,17 @@
+---
+interface Props {
+	animated: boolean
+}
+
+const { animated } = Astro.props
+
+---
+<div id="background-scene" data-animated={animated}></div>
+
+<script>
+	import { initBackgroundScene } from "../lib/background-scene.ts";
+	const backgroundElement = document.getElementById("background-scene")
+	if(backgroundElement) {
+		await initBackgroundScene(backgroundElement, { animated: backgroundElement.dataset.animated === "true", });
+	}
+</script>

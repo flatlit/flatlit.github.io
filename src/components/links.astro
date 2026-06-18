@@ -1,0 +1,36 @@
+---
+import Bluesky from "simple-icons-astro/Bluesky";
+import Github from "simple-icons-astro/Github";
+import Instagram from "simple-icons-astro/Instagram";
+import Itchdotio from "simple-icons-astro/Itchdotio";
+import Kofi from "simple-icons-astro/Kofi";
+import Patreon from "simple-icons-astro/Patreon";
+import Reddit from "simple-icons-astro/Reddit";
+import Steam from "simple-icons-astro/Steam";
+import TikTok from "simple-icons-astro/Tiktok";
+import Youtube from "simple-icons-astro/Youtube";
+import {
+  BLUESKY_URL,
+  GITHUB_URL,
+  INSTAGRAM_URL,
+  ITCH_IO_URL,
+  KOFI_URL,
+  PATREON_URL,
+  REDDIT_URL,
+  STEAM_URL,
+  TIKTOK_URL,
+  YOUTUBE_URL,
+} from "../lib/constants";
+---
+<div class="flex flex-row flex-wrap gap-2 text-teal-500">
+     <a href={BLUESKY_URL} target="_blank" class="hover:text-white"><Bluesky /></a>
+     <a href={GITHUB_URL} target="_blank" class="hover:text-white"><Github /></a>
+     <a href={ITCH_IO_URL} target="_blank" class="hover:text-white"><Itchdotio /></a>
+     <a href={YOUTUBE_URL} target="_blank" class="hover:text-white"><Youtube /></a>
+     <!-- <a href={REDDIT_URL} target="_blank" class="hover:text-white"><Reddit /></a> -->
+     <!-- <a href={STEAM_URL} target="_blank" class="hover:text-white"><Steam /></a> -->
+     <!-- <a href={INSTAGRAM_URL} target="_blank" class="hover:text-white"><Instagram /></a> -->
+     <!-- <a href={TIKTOK_URL} target="_blank" class="hover:text-white"><TikTok /></a> -->
+     <!-- <a href={PATREON_URL} target="_blank" class="hover:text-white"><Patreon /></a> -->
+     <!-- <a href={KOFI_URL} target="_blank" class="hover:text-white"><Kofi /></a> -->
+</div>

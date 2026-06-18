@@ -1,0 +1,16 @@
+@import "tailwindcss";
+@import "@fontsource-variable/oswald";
+@import "@fontsource-variable/open-sans";
+
+body {
+  font-family: "Open Sans Variable", "Oswald Variable", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Oswald Variable", sans-serif;
+}
